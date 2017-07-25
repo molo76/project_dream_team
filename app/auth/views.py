@@ -18,7 +18,7 @@ def register():
     if form.validate_on_submit():
         employee = Employee(email=form.email.data,
                             username=form.username.data,
-                            fist_name=form.first_name.data,
+                            first_name=form.first_name.data,
                             last_name=form.last_name.data,
                             password=form.password.data)
 
@@ -28,7 +28,7 @@ def register():
         flash('You have successfully registered! You may now login.')
 
         # redirect to the login page
-        return redirect(url_for('auth_login'))
+        return redirect(url_for('auth.login'))
 
     # load registration template
     return render_template('auth/register.html', form=form, title='Resigster')
@@ -51,7 +51,10 @@ def login():
             login_user(employee)
 
             # redirect to the dashboard page after login_user
-            return redirect(url_for('home.dashboard'))
+            if employee.is_admin:
+                return redirect(url_for('home.admin_dashboard'))
+            else:
+                return redirect(url_for('home.dashboard'))
 
         # when login details are incorrect
         else:
