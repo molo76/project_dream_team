@@ -5,6 +5,9 @@ https://scotch.io/tutorials/build-a-crud-web-app-with-python-and-flask-part-one
 
 A good introduction to Flask and SQLAlchemy, hoping to take this and extend it to other uses.
 
+25/07/2017:
+Tutorial completed. 
+
 11/05/2017:
 Added 'auth/views.py' blueprint containing the routes and  user authentication
 
